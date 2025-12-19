@@ -10,7 +10,7 @@ steps:
 
 # Krok 2: Wypchnij obraz do Artifact Registry
 images:
-  - 'europe-central2-docker.pkg.dev/$PROJECT_ID/moja-aplikacja-repo/demo-app:$SHORT_SHA'
+  - 'europe-central2-docker.pkg.dev/$PROJECT_ID/my-app/demo-app:$SHORT_SHA'
 
 options:
   logging: CLOUD_LOGGING_ONLY # Dodaj tę linię
