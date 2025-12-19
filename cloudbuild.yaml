@@ -1,6 +1,5 @@
 steps:
   # Krok 1: Zbuduj obraz Docker
-  # W Cloud Build używamy gcr.io/cloud-builders/docker do budowania obrazów
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build',
@@ -8,11 +7,10 @@ steps:
       'europe-central2-docker.pkg.dev/$PROJECT_ID/moja-aplikacja-repo/demo-app:$SHORT_SHA',
       '.'
     ]
-    # Wskazujemy katalog, w którym znajduje się Dockerfile, jeśli nie jest to katalog główny.
-    # Jeśli Dockerfile jest w katalogu głównym, można usunąć 'dir: .'.
-    # Jeśli np. jest w podkatalogu 'app', to 'dir: app'. W Twoim przypadku 'Dockerfile' jest w katalogu głównym.
 
 # Krok 2: Wypchnij obraz do Artifact Registry
-# Sekcja 'images' określa obrazy, które Cloud Build ma wypchnąć po pomyślnym zbudowaniu.
 images:
   - 'europe-central2-docker.pkg.dev/$PROJECT_ID/moja-aplikacja-repo/demo-app:$SHORT_SHA'
+
+options:
+  logging: CLOUD_LOGGING_ONLY # Dodaj tę linię
